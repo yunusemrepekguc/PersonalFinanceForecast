@@ -1,11 +1,10 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
+    id("personalfinanceapp.application")
     alias(libs.plugins.kotlin.compose)
-    alias(libs.plugins.hilt.android)
     alias(libs.plugins.kotlin.ksp)
+    alias(libs.plugins.hilt.android)
 }
 
 android {
@@ -47,14 +46,13 @@ android {
         compose = true
         buildConfig = true
     }
-    packaging {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
-    }
 }
 
 dependencies {
+    implementation(project(":presentation"))
+    implementation(project(":domain"))
+    implementation(project(":data"))
+    implementation(project(":core"))
 
     //Core Android
     implementation(libs.androidx.core.ktx)
@@ -68,7 +66,7 @@ dependencies {
     //Dagger & Hilt
     implementation(libs.hilt.android)
     implementation(libs.hilt.navigation.compose)
-    ksp(libs.hilt.compiler)
+    implementation(libs.hilt.android.compiler)
 
     // ========== Navigation ==========
     implementation(libs.navigation.compose)
