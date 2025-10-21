@@ -42,15 +42,13 @@ class PersonalFinanceAppApplicationPlugin : Plugin<Project> {
                             "proguard-rules.pro"
                         )
                     }
-                }
-
-                compileOptions {
-                    sourceCompatibility = JavaVersion.VERSION_17
-                    targetCompatibility = JavaVersion.VERSION_17
+                    debug {
+                        isMinifyEnabled = false
+                    }
                 }
 
                 buildFeatures {
-                    compose = true
+                    buildConfig = true
                 }
             }
 
