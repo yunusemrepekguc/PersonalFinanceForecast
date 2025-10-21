@@ -21,7 +21,12 @@ dependencyResolutionManagement {
 
 rootProject.name = "PersonalFinanceForecast"
 include(":app")
+
 include(":core:core-common")
 include(":core:core-network")
 include(":core:core-database")
-include(":feature")
+include(":core:core-domain")
+include(":core:core-di")
+
+include(":feature:feature-account")
+include(":feature:feature-category")
